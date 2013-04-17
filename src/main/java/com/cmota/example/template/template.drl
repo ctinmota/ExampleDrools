@@ -1,0 +1,15 @@
+template header
+field
+lower
+upper
+codes
+
+package range;
+template "inRange"
+	rule "is in range @{row.rowNumber}"
+		when
+			Item( $name : name, $v : @{field} >= @{lower} && <= @{upper}, $code : code @{codes} )
+		then
+			System.out.println( "Item " + $name + " @{field} in range: " + $v + "code: " + $code );
+		end
+end template

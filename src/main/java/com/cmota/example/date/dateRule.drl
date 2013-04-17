@@ -1,0 +1,15 @@
+package com.cmota.example.date
+
+import java.util.Calendar;
+
+rule "Is in grace period"
+	when 
+		%date : Calendar.getInstance().setTime(Bean.dueDate) 
+		date.add(Calendar.DAY_OF_MONTH, Bean.gracePeriod)		
+		$a : Bean (Calendar.getInstance().before(dueDate.getTime())
+	then 
+		System.out.println("is in grace period");
+	end	
+	
+			
+		 
